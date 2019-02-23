@@ -7,6 +7,7 @@
 ## TODO:
 # create a list of blanks and print it each time
 # each time they get a letter update the list of blanks to sub in the letter
+incorrectletters=[]
 
 def getinputs():
     global lives
@@ -19,13 +20,28 @@ def getinputs():
     print("playing with '{}'' lives to guess the word '{}'!".format(lives, word))
     chars=list(word.lower())
     solution=["_"] * len(chars)
+    print("*****************************")
+
+def printstatus():
+    #global incorrectletters
+    #global lives
+    #global solution
+    print("\nYou have "+ str(lives) +" lives remaining")
+    if len(incorrectletters)>0:
+        print("You've already guessed these incorrect letters:")
+        for index, letter in enumerate(incorrectletters):
+            if index == (len(incorrectletters)-1):
+                print(letter)
+            else:
+                print(letter, end=", ")
+    print("The current solution is: ")
+    for letter in solution:
+        print(letter, end=" ")
 
 def promptguess():
     global solution
     global guess
-    print("The current solution is: ")
-    for letter in solution:
-        print(letter, end=" ")
+    global incorrectletters
     guess=input("\nGuess a character\n")
 
 def checkguess():
@@ -34,17 +50,21 @@ def checkguess():
     global guess
     global lives
     global won
+    global incorrectletters
     hit=False
     for index, char in enumerate(chars):
         if guess == char:
             solution[index]=guess
             hit=True
+            print("Well done you got one!")
             if solution == chars:
                 won=True
                 break
     else:
         if not hit:
+            print("Sorry that wasn't one!")
             lives-=1
+            incorrectletters.append(guess)
 
 def showresult():
     global won
@@ -58,9 +78,11 @@ def showresult():
 getinputs()
 won=False
 while not won and lives>0:
-    #print scoreboard
+    #print status
+    printstatus()
     #ask for letter
     promptguess()
     #check and see if they won
     checkguess()
-    showresult()
+
+showresult()
