@@ -5,9 +5,15 @@
 # global varname makes a var in a function ref the external definition
 
 ## TODO:
-# create a list of blanks and print it each time
-# each time they get a letter update the list of blanks to sub in the letter
+# far too much use of global variables
+# no input validation
+
+import time
+
 incorrectletters=[]
+word=""
+chars=[]
+solution=[]
 
 def getinputs():
     global lives
@@ -23,9 +29,6 @@ def getinputs():
     print("*****************************")
 
 def printstatus():
-    #global incorrectletters
-    #global lives
-    #global solution
     print("\nYou have "+ str(lives) +" lives remaining")
     if len(incorrectletters)>0:
         print("You've already guessed these incorrect letters:")
@@ -39,13 +42,10 @@ def printstatus():
         print(letter, end=" ")
 
 def promptguess():
-    global solution
     global guess
-    global incorrectletters
-    guess=input("\nGuess a character\n")
+    guess=input("\nGuess a character: ").lower()
 
 def checkguess():
-    global chars
     global solution
     global guess
     global lives
@@ -65,11 +65,9 @@ def checkguess():
             print("Sorry that wasn't one!")
             lives-=1
             incorrectletters.append(guess)
+    time.sleep(2)
 
 def showresult():
-    global won
-    global word
-    global lives
     if won:
        print("You correctly guessed " + word + " with " + str(lives) + " lives remaining") 
     else:
