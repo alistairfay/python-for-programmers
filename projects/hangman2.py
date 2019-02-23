@@ -23,8 +23,10 @@ def getinputs():
 def promptguess():
     global solution
     global guess
-    print(solution)
-    guess=input("Guess a character\n")
+    print("The current solution is: ")
+    for letter in solution:
+        print(letter, end=" ")
+    guess=input("\nGuess a character\n")
 
 def checkguess():
     global chars
