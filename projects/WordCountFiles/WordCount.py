@@ -10,7 +10,6 @@ hints - when counting words dictionaries are your friend
 '''
 import sys
 import WordsDictClass
-import operator
 
 def get_input():
     if len(sys.argv) != 2:
@@ -37,7 +36,6 @@ for word in wordlist:
 print("There are a total of {} words".format(mywordsdict.return_total()))
 print("There are a {} unique words".format(mywordsdict.return_unique()))
 print("The words appear this number of times:")
-mywordsdict_sorted=sorted(mywordsdict.items(), key=operator.itemgetter(1), reverse=True)
-for item in mywordsdict_sorted:
+mywords_list_of_tuples=mywordsdict.return_sorted()
+for item in mywords_list_of_tuples:
         print(item[0]+" - "+str(item[1]))
-#write findings to output file

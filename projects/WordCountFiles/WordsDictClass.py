@@ -1,4 +1,5 @@
 class WordsDict(dict):
+
     '''
     subclass of dict expected to hold a list of words as keys and a count of their occurence asa values
     '''
@@ -18,4 +19,8 @@ class WordsDict(dict):
 
     def return_unique(self):
         return len(self)
+
+    def return_sorted(self):
+        import operator
+        return sorted(self.items(), key=operator.itemgetter(1), reverse=True)
     
