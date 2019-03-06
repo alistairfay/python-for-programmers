@@ -21,6 +21,10 @@ class WordsDict(dict):
         return len(self)
 
     def return_sorted(self):
+        '''
+        returns a representation of the dics which is 
+        a list of tuples sorted by what was the dict values
+        '''
         import operator
         return sorted(self.items(), key=operator.itemgetter(1), reverse=True)
     
