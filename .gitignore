@@ -121,3 +121,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#added by AF
+projects/WordCountFiles/__pycache__/WordsDictClass.cpython-36.pyc
