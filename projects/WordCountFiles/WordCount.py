@@ -26,6 +26,7 @@ def process_input():
 def read_file(filename):
     inputfile = open(filename, "r")
     text = inputfile.read()
+    inputfile.close()
     return text
 
 
@@ -46,6 +47,7 @@ def print_output(mywordsdict, filename):
     mywords_list_of_tuples = mywordsdict.return_sorted()
     for item in mywords_list_of_tuples:
         f.write(item[0]+" - "+str(item[1])+"\n")
+    f.close()
 
 
 def main():
