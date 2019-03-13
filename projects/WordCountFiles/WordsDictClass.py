@@ -10,7 +10,7 @@ class WordsDict(dict):
         increments the count of existing words by 1
         '''
         if word in self.keys():
-            self[word]=self[word]+1
+            self[word]+=1
         else:
             self[word]=1
     
